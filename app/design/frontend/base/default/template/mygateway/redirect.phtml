@@ -1,0 +1,21 @@
+<?php
+// Retrieve order
+$_order = new Mage_Sales_Model_Order();
+$orderId = Mage::getSingleton('checkout/session')->getLastRealOrderId();
+$_order->loadByIncrementId($orderId);
+$baseGrandTotal = number_format($_order->getBaseGrandTotal(),3);
+$session = Mage::getSingleton('core/session');
+$SID = $session->getEncryptedSessionId(); //current session id
+
+// L'URL http://196.203.11.74/paiement/ pour la phase tests et https://www.smt-sps.com.tn/clicktopay/ pour la phase de production
+?>
+<form name="mygatewayform" method="POST" action="http://196.203.11.74/paiement/">
+	<input type="hidden" name="Reference" value="<?php echo $orderId; ?>">
+    <input type="hidden" name="Montant" value="<?php echo $baseGrandTotal; ?>">
+	<input type="hidden" name="sid" value="<?php echo $SID; ?>">
+	<input type="hidden" name="Devise" type="text" value="TND">
+	<input type="hidden" name="affilie" value="numéro d'affiliation chez la société Monétique Tunisie ">
+</form>
+<script type="text/javascript">
+document.mygatewayform.submit();
+</script>
