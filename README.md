@@ -13,4 +13,4 @@ SMT_magento est un module Magento de paiement en ligne pour SPS Monétique Tunis
 	-Modifiez l'URL d'envoi des données du formulaire (http://196.203.11.74/paiement/ pour la phase du test exigés par Monétique Tunisie et https://www.smt-sps.com.tn/clicktopay/ après validation des tests et passage à la version production).
 	-Intégrez le numéro d'affiliation chez la société Monétique Tunisie dans la value du champs affilie.
 	
-5- Dans le fichier notification.php faites attention aux noms des tables de la votre base de données
+5- Dans le fichier notification.php faites attention aux noms des tables de votre base de données
